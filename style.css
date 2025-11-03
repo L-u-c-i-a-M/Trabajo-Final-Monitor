@@ -1,0 +1,24 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #a9e5ff;
+  color: #fcf0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  color: #00ade6;
+}
+
+#datos {
+  background: #212433;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #13ff8d;
+  width: 80%;
+  max-width: 600px;
+}
