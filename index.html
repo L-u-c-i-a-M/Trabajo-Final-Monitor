@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Monitor del Sistema</title>
-  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="app.js" defer></script>
+ 
 </head>
 <body>
-  <h1>📊 Monitor del Servidor</h1>
-
-  <div id="datos">
-    <p>Cargando datos...</p>
-  </div>
-
-  <script src="app.js"></script>
+  <h2>📡 Monitor del Sistema en Tiempo Real</h2>
+  <section id="cpu"><h3>CPU</h3>Conectando...</section>
+  <section id="memoria"><h3>Memoria</h3>Conectando...</section>
+  <section id="discos"><h3>Discos</h3>Conectando...</section>
+  <section id="red"><h3>Red</h3>Conectando...</section>
+  <section id="procesos"><h3>Procesos</h3>Conectando...</section>
+  <section id="sistema"><h3>Sistema</h3>Conectando...</section>
+  <section id="usuarios"><h3>Usuarios</h3>Conectando...</section>
+  
 </body>
 </html>
