@@ -141,6 +141,28 @@ socket.on("datosSistema", (datos) => {
         <span>Distro:</span> ${datos.sistema.distro} <br>
         <span>Versión:</span> ${datos.sistema.version}
     `;
+
+  // === BATERÍA ===
+  if (datos.bateria) {
+    const bateria = datos.bateria;
+    const bateriaHTML = `
+    <p><strong>Porcentaje:</strong> ${bateria.porcentaje}</p>
+    <p><strong>Estado:</strong> ${bateria.estado}</p>
+  `;
+    document.getElementById("bateriaInfo").innerHTML = bateriaHTML;
+  }
+
+  // === GRÁFICA ===
+  if (datos.grafica) {
+    const gpu = datos.grafica;
+    const graficaHTML = `
+    <p><strong>Fabricante:</strong> ${gpu.vendor}</p>
+    <p><strong>Modelo:</strong> ${gpu.model}</p>
+    <p><strong>Bus:</strong> ${gpu.bus}</p>
+    <p><strong>VRAM:</strong> ${gpu.vram} MB</p>
+  `;
+    document.getElementById("graficaInfo").innerHTML = graficaHTML;
+  }
 });
 
 let cpuChart;
