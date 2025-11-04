@@ -1,21 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>Monitor del Sistema</title>
-  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-  <script src="app.js" defer></script>
- 
-</head>
-<body>
-  <h2>📡 Monitor del Sistema en Tiempo Real</h2>
-  <section id="cpu"><h3>CPU</h3>Conectando...</section>
-  <section id="memoria"><h3>Memoria</h3>Conectando...</section>
-  <section id="discos"><h3>Discos</h3>Conectando...</section>
-  <section id="red"><h3>Red</h3>Conectando...</section>
-  <section id="procesos"><h3>Procesos</h3>Conectando...</section>
-  <section id="sistema"><h3>Sistema</h3>Conectando...</section>
-  <section id="usuarios"><h3>Usuarios</h3>Conectando...</section>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monitor del Sistema</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Íconos -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Socket.io -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+    <!-- Librería de gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <h2><i class="fa-solid fa-network-wired"></i> Red</h2>
+      <div id="redContainer" class="red-container"></div>
+    </aside>
+
+    <main class="dashboard">
+      <header class="dashboard-header">
+        <h1>📡 Monitor del Sistema</h1>
+        <div id="reloj"></div>
+      </header>
+
+      <section class="cards">
+        <div class="card">
+          <h3><i class="fa-solid fa-microchip"></i> CPU</h3>
+          <div class="chart">
+            <svg>
+              <circle cx="60" cy="60" r="50"></circle>
+              <circle id="cpuCircle" cx="60" cy="60" r="50"></circle>
+            </svg>
+            <div class="value" id="cpuValor">0%</div>
+          </div>
+          <div id="cpuInfo"></div>
+          <canvas id="cpuChart"></canvas>
+        </div>
+
+        <div class="card">
+          <h3><i class="fa-solid fa-memory"></i> Memoria</h3>
+          <div class="chart">
+            <svg>
+              <circle cx="60" cy="60" r="50"></circle>
+              <circle id="memCircle" cx="60" cy="60" r="50"></circle>
+            </svg>
+            <div class="value" id="memValor">0%</div>
+          </div>
+          <div id="memInfo"></div>
+          <canvas id="memChart"></canvas>
+        </div>
+        <!-- ======= DISCOS ======= -->
+        <div class="card" id="discosCard">
+          <h3><i class="fa-solid fa-hard-drive"></i> Discos</h3>
+          <div id="discosContainer" class="discos-grid"></div>
+        </div>
+
+        <!-- Sistema -->
+        <div class="card">
+          <h3><i class="fa-solid fa-desktop"></i> Sistema</h3>
+          <p id="sistema">Cargando...</p>
+        </div>
+
+        <!-- Usuarios -->
+        <div class="card">
+          <h3><i class="fa-solid fa-users"></i> Usuarios</h3>
+          <p id="usuarios">0 usuarios</p>
+          <canvas id="usuarios"></canvas>
+        </div>
+        <!-- ======= PROCESOS ======= -->
+        <div class="card" id="procesosCard">
+          <h3><i class="fa-solid fa-tasks"></i> Procesos</h3>
+          <div id="procesos" class="procesos-info">
+            <p>Total de procesos: <strong>0</strong></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
