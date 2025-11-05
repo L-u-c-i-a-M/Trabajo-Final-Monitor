@@ -1,5 +1,5 @@
 // Conexión al servidor WebSocket
-const socket = io("http://localhost:3000"); // Ajusta la IP si es necesario
+const socket = io("http://192.168.1.7:3000"); // Ajusta la IP si es necesario
 
 socket.on("connect", () => {
   console.log("🟢 Conectado al servidor de monitoreo");

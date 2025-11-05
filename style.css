@@ -1,40 +1,61 @@
+/* ===== ESTILOS GENERALES ===== */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background-color: #1e1e1e;
   color: #e6e6e6;
   display: flex;
-  height: 100vh;
+  flex-direction: row;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* ===== SIDEBAR ===== */
 .sidebar {
-  width: 220px;
+  width: 280px;
   background-color: #111;
   padding: 20px;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+  color: #a0d3ff;
+  overflow-y: auto;
+  max-height: 100vh;
+  transition: all 0.3s ease;
 }
 
 .sidebar h2 {
   color: #f5a623;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
+.red-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.sidebar ul li {
-  padding: 10px 0;
-  border-bottom: 1px solid #333;
-  cursor: pointer;
-  transition: 0.3s;
+.red-card {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.sidebar ul li:hover {
+.red-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.red-card span {
   color: #f5a623;
+  font-weight: bold;
+}
+
+.red-card p {
+  margin: 4px 0;
+  font-size: 0.9rem;
 }
 
 /* ===== DASHBOARD ===== */
@@ -54,11 +75,13 @@ body {
   border-radius: 10px;
   margin-bottom: 25px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  flex-wrap: wrap;
 }
 
 .dashboard-header h1 {
   color: #f5a623;
   margin: 0;
+  font-size: 1.4rem;
 }
 
 #reloj {
@@ -138,9 +161,7 @@ circle:last-child {
   font-weight: bold;
 }
 
-
-
-/* ===== GRÁFICO DE discos ===== */
+/* ===== GRÁFICO DE DISCOS ===== */
 .discos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -153,7 +174,7 @@ circle:last-child {
   border-radius: 10px;
   padding: 10px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .disco-item h4 {
@@ -181,49 +202,58 @@ circle:last-child {
   font-size: 1.3rem;
 }
 
-/* ===== SIDEBAR RED ===== */
-.sidebar {
-  width: 280px;
-  background-color: #111;
-  padding: 20px;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
-  color: #a0d3ff;
-  overflow-y: auto;
-  max-height: 100vh;
+/* ===== RESPONSIVE ===== */
+
+/* Para pantallas medianas (tablets) */
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-height: 250px;
+    border-bottom: 2px solid #222;
+    box-shadow: none;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 }
 
-.sidebar h2 {
-  color: #f5a623;
-  text-align: center;
-  margin-bottom: 15px;
-  font-size: 1.3rem;
-}
+/* Para pantallas pequeñas (celulares) */
+@media (max-width: 600px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
 
-.red-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+  .sidebar {
+    padding: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
 
-.red-card {
-  background-color: #1a1a1a;
-  border-radius: 10px;
-  padding: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+  .sidebar h2 {
+    font-size: 1.1rem;
+  }
 
-.red-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-}
+  .card {
+    padding: 15px;
+  }
 
-.red-card span {
-  color: #f5a623;
-  font-weight: bold;
-}
+  .chart {
+    width: 90px;
+    height: 90px;
+  }
 
-.red-card p {
-  margin: 4px 0;
-  font-size: 0.9rem;
+  .value {
+    font-size: 1rem;
+  }
+
+  #reloj {
+    align-self: flex-end;
+  }
 }
